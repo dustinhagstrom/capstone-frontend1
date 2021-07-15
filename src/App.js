@@ -1,9 +1,14 @@
-import './App.css';
+import React from "react";
+
+import CreditRouter from "./CreditRouter";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <div>App</div>
+      <div>
+        <CreditRouter />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,47 @@
+.Nav{
+	width: 100%;
+	background-color: #4A148C;
+	display: flex;
+	justify-content: center;
+}
+
+
+.Nav__one{
+	color: #FFFF00;
+	font-size: xxx-large;
+	font-family: Papyrus;
+
+	
+}
+
+.Nav__two{
+	color: #FFFF00;
+	font-size: large;
+	font-family: Papyrus;
+
+}
+
+
+
+
+
+@media (min-width: 401px) and (max-width: 500px){
+	.Nav__one{
+		flex: 1;
+	}
+	
+	.Nav__two{
+		flex: 1;
+	}
+}
+
+@media (max-width: 400px){
+	.Nav{
+		display: block;
+	}
+	
+	.Nav__two{
+		text-align: right;
+		padding-bottom: 5px;
+	}
+}
