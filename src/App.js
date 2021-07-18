@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreditRouter from "./CreditRouter";
+import CreditRouter from "./components/creditCards/CreditRouter";
 import "./App.css";
 
 function App() {
