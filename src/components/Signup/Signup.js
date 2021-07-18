@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import "./Signup.css";
 export class Signup extends Component {
   state = {
     firstName: "",
@@ -23,7 +24,7 @@ export class Signup extends Component {
         <div className="form-div">
           <form className="form">
             <div className="inline">
-              <div className="input-container">
+              <div className="inline-container">
                 <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
@@ -32,7 +33,7 @@ export class Signup extends Component {
                   autoFocus
                 />
               </div>
-              <div className="input-container">
+              <div className="inline-container" id="last-name">
                 <label htmlFor="lastName">Last Name</label>
                 <input
                   type="text"

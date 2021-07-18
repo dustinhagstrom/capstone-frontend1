@@ -18,7 +18,7 @@ export class MainRouter extends Component {
           <>
             {/* <Route path="/payment" exact component={Payment} /> */}
             <Route path="/login" exact component={Login} />
-            <Route path="/login" exact component={Signup} />
+            <Route path="/signup" exact component={Signup} />
           </>
         </Provider>
       </Router>
