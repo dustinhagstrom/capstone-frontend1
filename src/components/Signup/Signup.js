@@ -8,6 +8,12 @@ export class Signup extends Component {
     username: "",
     password: "",
     confirmPassword: "",
+    firstNameError: "",
+    lastNameError: "",
+    emailError: "",
+    usernameError: "",
+    passwordError: "",
+    confirmPasswordError: "",
   };
 
   render() {
