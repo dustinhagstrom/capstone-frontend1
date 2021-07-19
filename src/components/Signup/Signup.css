@@ -63,3 +63,26 @@ input:focus {
     outline: none;
     background-color: rgba(76, 228, 228, 1);
 }
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+.button-div button {
+    padding: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.button-div button:disabled {
+    background-color: grey;
+    color: rgba(245, 222, 179, 0.5)
+}
+.error-message {
+    background-color: white;
+    color: red;
+}

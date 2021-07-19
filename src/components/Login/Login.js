@@ -19,6 +19,9 @@ export class Login extends Component {
                 <input type="text" id="password" placeholder="Password" />
               </div>
             </div>
+            <div className="button-div">
+              <button>Login</button>
+            </div>
           </form>
         </div>
       </div>

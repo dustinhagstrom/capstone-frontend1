@@ -71,6 +71,9 @@ export class Signup extends Component {
                 />
               </div>
             </div>
+            <div className="button-div">
+              <button disabled={true}>Sign me Up!</button>
+            </div>
           </form>
         </div>
       </div>
