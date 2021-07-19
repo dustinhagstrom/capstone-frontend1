@@ -1,12 +1,58 @@
-import React from "react";
-import "./Nav.css";
+import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-function Nav() {
-  return (
-    <div className="Nav">
-      <div>Nav</div>
-    </div>
-  );
+import "./Nav.css";
+export class Nav extends Component {
+  render() {
+    return (
+      <nav className="Nav-bar">
+        <div>
+          <h1>
+            <Link to="/">Kickball</Link>
+          </h1>
+        </div>
+        <div>
+          <ul>
+            <li>
+              {this.props.user ? (
+                <NavLink activeClassName="selected" to="/team-page">
+                  Team
+                </NavLink>
+              ) : (
+                ""
+              )}
+            </li>
+            <li>
+              {this.props.user ? (
+                <NavLink activeClassName="selected" to="/profile">
+                  {this.props.user.username}
+                </NavLink>
+              ) : (
+                <NavLink activeClassName="selected" to="/sign-up">
+                  Sign Up
+                </NavLink>
+              )}
+            </li>
+            <li>
+              {this.props.user ? (
+                <NavLink
+                  activeClassName="selected"
+                  to="/profile"
+                  onClick={this.props.handleUserLogout}
+                >
+                  Logout
+                </NavLink>
+              ) : (
+                <NavLink activeClassName="selected" to="/login">
+                  Login
+                </NavLink>
+              )}
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
+  }
 }
 
 export default Nav;

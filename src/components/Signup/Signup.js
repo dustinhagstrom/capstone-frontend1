@@ -187,19 +187,9 @@ export class Signup extends Component {
         draggable: true,
         progress: undefined,
       });
-      // this.setState({
-      //   firstName: "",
-      //   lastName: "",
-      //   email: "",
-      //   username: "",
-      //   password: "",
-      //   confirmPassword: "",
-      //   isButtonDisabled: true,
-      // });
     } catch (e) {
       console.log(e);
-      toast.error(`${e.response.data.message}`, {
-        //toast error
+      toast.error(e.response.data.message, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -370,7 +360,7 @@ export class Signup extends Component {
               </div>
             </div>
             <div className="button-div">
-              <button disabled={this.state.isButtonDisabled}>
+              <button type="submit" disabled={this.state.isButtonDisabled}>
                 Sign me Up!
               </button>
             </div>

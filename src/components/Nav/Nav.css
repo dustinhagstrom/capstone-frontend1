@@ -1,49 +1,15 @@
-.Nav{
+.Nav-bar{
 	width: 100%;
-	height: 10%;
 	background-color: #4A148C;
 	color: #FFFF00;
 	display: flex;
 	justify-content: center;
 }
 
-
-.Nav__one{
-	
-	font-size: xxx-large;
-	font-family: Papyrus;
-
-	
+nav div a {
+	color: white;
+	text-decoration: none;
 }
-
-.Nav__two{
-	color: #FFFF00;
-	font-size: large;
-	font-family: Papyrus;
-
-}
-
-
-
-
-
-@media (min-width: 401px) and (max-width: 500px){
-	.Nav__one{
-		flex: 1;
-	}
-	
-	.Nav__two{
-		flex: 1;
-	}
-}
-
-@media (max-width: 400px){
-	.Nav{
-		display: block;
-	}
-	
-	.Nav__two{
-		text-align: right;
-		padding-bottom: 5px;
-	}
+nav div ul {
+	list-style-type: none;
 }
