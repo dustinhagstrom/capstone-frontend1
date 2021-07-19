@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 
-import store from "./redux/PaymentStore";
+// import store from "./redux/PaymentStore";
 // import Payment from "./components/creditCards/Payment";
 // import CreditCard from "./components/creditCards/CreditCard";
 import Home from "./components/Home/Home";
@@ -14,14 +14,14 @@ export class MainRouter extends Component {
   render() {
     return (
       <Router>
-        <Provider store={store}>
-          <Nav />
-          <>
-            <Route path="/" component={Home} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/signup" exact component={Signup} />
-          </>
-        </Provider>
+        {/* <Provider store={store}> */}
+        <Nav />
+        <>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+        </>
+        {/* </Provider> */}
       </Router>
     );
   }

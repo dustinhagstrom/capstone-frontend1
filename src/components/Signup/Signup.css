@@ -83,6 +83,7 @@ input:focus {
     color: rgba(245, 222, 179, 0.5)
 }
 .error-message {
-    background-color: white;
-    color: red;
+    /* background-color: white; */
+    color: white;
+    position: absolute;
 }
