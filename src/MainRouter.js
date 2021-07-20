@@ -10,21 +10,30 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
 import TeamPage from "./components/TeamPage/TeamPage";
+// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 export class MainRouter extends Component {
   render() {
     return (
       <Router>
         <Provider store={store}>
-          <Nav user={this.props.user} />
+          <Nav
+            user={this.props.user}
+            handleUserLogout={this.props.handleUserLogout}
+          />
           <>
             <Route path="/" exact component={Home} />
             <Route path="/signup" exact component={Signup} />
             <Route
-              path="/login"
-              handleUserLogin={this.props.handleUserLogin}
               exact
-              component={Login}
+              path="/login"
+              render={(routerProps) => (
+                <Login
+                  {...routerProps}
+                  handleUserLogin={this.props.handleUserLogin}
+                  handleUserLogout={this.props.handleUserLogout}
+                />
+              )}
             />
             <Route path="/cc" exact component={CreditCard} />
             <Route path="/team-page" exact component={TeamPage} />

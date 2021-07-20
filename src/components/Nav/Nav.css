@@ -1,15 +1,22 @@
 .Nav-bar{
-	width: 100%;
 	background-color: #4A148C;
-	color: #FFFF00;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	padding: 0px 20px;
+	
 }
 
 nav div a {
-	color: white;
+	color: #4ce4e4;
 	text-decoration: none;
 }
 nav div ul {
 	list-style-type: none;
+	display: flex;
+}
+nav div ul li {
+	margin-left: 10px;
+}
+.selected {
+	text-decoration: #4ce4e4 underline;
 }

@@ -1,7 +1,7 @@
 .container {
     width: 850px;
     height: 600px;
-    background-color: #b31b1b;
+    background-color: rgba(179, 27, 27, 1);
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4); 
     position: absolute;
     top: 0;
@@ -14,7 +14,7 @@
     text-align: center;
     margin: 25px 25px;
     font-size: 40px;
-    color: #4ce4e4
+    color: rgb(181, 235,115)
 }
 .form-div {
     display: flex;
@@ -32,7 +32,7 @@
 .inline .inline-container label {
     display: block;
     margin-bottom: 3px;
-    color: #4ce4e4
+    color: rgb(181, 235,115)
 }
 .inline .inline-container input {
     padding: 5px 5px;
@@ -45,7 +45,7 @@
     display: block;
     margin-bottom: 3px;
     margin-top: 20px;
-    color: #4ce4e4
+    color: rgb(181, 235,115)
 }
 .block .block-container input {
     padding: 5px;
@@ -55,13 +55,13 @@
     margin-left: 10px;
 }
 input {
-    background-color: rgba(76, 228, 228, 0.8);
+    background-color: rgba(239, 243, 247, 0.8);
     border-width: 0px;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
 }
 input:focus {
     outline: none;
-    background-color: rgba(76, 228, 228, 1);
+    background-color: rgb(255, 255, 255);
 }
 
 .button-div {
@@ -72,15 +72,15 @@ input:focus {
 .button-div button {
     padding: 10px;
     border: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: whitesmoke;
+    background-color: rgba(239, 243, 247, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     font-size: 25px;
     cursor: pointer;
 }
 
 .button-div button:disabled {
     background-color: grey;
-    color: rgba(245, 222, 179, 0.5)
+    color: rgba(239, 243, 247, 0.2)
 }
 .error-message {
     /* background-color: white; */

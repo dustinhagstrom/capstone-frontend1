@@ -8,15 +8,26 @@ export class Nav extends Component {
       <nav className="Nav-bar">
         <div>
           <h1>
-            <Link to="/">Kickball</Link>
+            <Link to="/">Kickballers™</Link>
           </h1>
         </div>
         <div>
           <ul>
             <li>
               {this.props.user ? (
+                <NavLink activeClassName="selected" to="/profile">
+                  {this.props.user.username}'s Profile
+                </NavLink>
+              ) : (
+                <NavLink activeClassName="selected" to="/signup">
+                  Sign Up
+                </NavLink>
+              )}
+            </li>
+            <li>
+              {this.props.user ? (
                 <NavLink activeClassName="selected" to="/team-page">
-                  Team
+                  Your Team
                 </NavLink>
               ) : (
                 ""
@@ -24,20 +35,9 @@ export class Nav extends Component {
             </li>
             <li>
               {this.props.user ? (
-                <NavLink activeClassName="selected" to="/profile">
-                  {this.props.user.username}
-                </NavLink>
-              ) : (
-                <NavLink activeClassName="selected" to="/sign-up">
-                  Sign Up
-                </NavLink>
-              )}
-            </li>
-            <li>
-              {this.props.user ? (
                 <NavLink
                   activeClassName="selected"
-                  to="/profile"
+                  to="/login"
                   onClick={this.props.handleUserLogout}
                 >
                   Logout

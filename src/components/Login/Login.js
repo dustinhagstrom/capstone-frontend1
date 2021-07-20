@@ -95,9 +95,9 @@ export class Login extends Component {
 
       let decodedToken = jwt_decode(jwtToken);
       console.log(decodedToken);
+      console.log(this.props);
       this.props.handleUserLogin(decodedToken);
       this.props.history.push("/team-page");
-
       toast.success("Welcome User message", {
         position: "top-center",
         autoClose: 5000,
