@@ -10,6 +10,7 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
 import TeamPage from "./components/TeamPage/TeamPage";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 // import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 export class MainRouter extends Component {
@@ -35,8 +36,8 @@ export class MainRouter extends Component {
                 />
               )}
             />
-            <Route path="/cc" exact component={CreditCard} />
-            <Route path="/team-page" exact component={TeamPage} />
+            <PrivateRoute path="/cc" exact component={CreditCard} />
+            <PrivateRoute path="/team-page" exact component={TeamPage} />
           </>
         </Provider>
       </Router>

@@ -10,6 +10,9 @@ nav div a {
 	color: #4ce4e4;
 	text-decoration: none;
 }
+nav div a:hover {
+	text-decoration: #4ce4e4 underline;
+}
 nav div ul {
 	list-style-type: none;
 	display: flex;

@@ -88,17 +88,14 @@ export class Login extends Component {
       };
       let success = await Axios.post("/api/player/login", userInputObj);
       let jwtToken = success.data.payload;
-      console.log(jwtToken);
       window.localStorage.setItem("jwtToken", jwtToken);
 
       setAxiosAuthToken(jwtToken);
 
       let decodedToken = jwt_decode(jwtToken);
-      console.log(decodedToken);
-      console.log(this.props);
       this.props.handleUserLogin(decodedToken);
       this.props.history.push("/team-page");
-      toast.success("Welcome User message", {
+      toast.success(`Welcome to KickBallers ${decodedToken.username}`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

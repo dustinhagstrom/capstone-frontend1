@@ -8,7 +8,7 @@ export class Nav extends Component {
       <nav className="Nav-bar">
         <div>
           <h1>
-            <Link to="/">Kickballers™</Link>
+            <Link to="/">KickBallers™</Link>
           </h1>
         </div>
         <div>
