@@ -178,7 +178,8 @@ export class Signup extends Component {
         password: this.state.password,
       };
       await Axios.post("/api/player/signup", userInputObj);
-      toast.success(`User created - Email sent to verify account`, {
+      this.props.history.push("/login");
+      toast.success(`User created - Please Login`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

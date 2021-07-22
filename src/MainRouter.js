@@ -11,8 +11,7 @@ import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
 import TeamPage from "./components/TeamPage/TeamPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-
+import Profile from "./components/Profile/Profile";
 export class MainRouter extends Component {
   render() {
     return (
@@ -24,7 +23,11 @@ export class MainRouter extends Component {
           />
           <>
             <Route path="/" exact component={Home} />
-            <Route path="/signup" exact component={Signup} />
+            <Route
+              path="/signup"
+              exact
+              render={(routerProps) => <Signup {...routerProps} />}
+            />
             <Route
               exact
               path="/login"
@@ -38,6 +41,7 @@ export class MainRouter extends Component {
             />
             <PrivateRoute path="/cc" exact component={CreditCard} />
             <PrivateRoute path="/team-page" exact component={TeamPage} />
+            <PrivateRoute path="/profile" exact component={Profile} />
           </>
         </Provider>
       </Router>
