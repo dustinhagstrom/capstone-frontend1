@@ -1,16 +1,16 @@
-import React from "react";
-// import "./App.css";
+import React, { Component } from "react";
 
-import UploadImages from "./imageLoader/image-upload.component";
-
-function Profile() {
-  return (
-    <div className="container">
-      <div className="content">
-        <UploadImages />
+import UploadImage from "./imageLoader/UploadImage";
+export class Profile extends Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="content">
+          <UploadImage />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Profile;
