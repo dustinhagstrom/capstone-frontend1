@@ -18,6 +18,10 @@ export class UploadImage extends Component {
     this.arrayBufferToBase64 = this.arrayBufferToBase64.bind(this);
   }
 
+  componentDidMount = () => {
+    this.handleGetPic();
+  };
+
   handleOnChange(event) {
     this.setState({
       file: this.fileInput.current.files[0],
@@ -26,14 +30,14 @@ export class UploadImage extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    let ourFile = this.state.file;
-    // alert(`Selected file = ${this.fileInput.current.files[0].name}`);
+    event.preventDefault(); //prevent full page reload
+    let data = new FormData(); //make a new formdata object
+    data.append("image", this.state.file); //give previously defined formdata object the ('key', 'value') pair.
     Axios({
       method: "post",
-      url: "api/pics/upload-player-image-to-db",
-      ourFile,
-    })
+      url: "/api/pics/upload-player-image-to-db",
+      data,
+    }) //send the post req with the new form data obj
       .then((res) => {
         console.log(res);
       })
@@ -53,16 +57,12 @@ export class UploadImage extends Component {
     try {
       console.log("click");
       let fetchedPic = await Axios.get("api/pics/player-image");
-      console.log(fetchedPic);
-      console.log(fetchedPic.data);
-      console.log(fetchedPic.data.payload);
-      console.log(fetchedPic.data.payload.img.data.data);
       let somethingElse = this.arrayBufferToBase64(
         fetchedPic.data.payload.img.data.data
       );
       console.log(somethingElse);
       this.setState({
-        profileImg: `data:image/png;base64${somethingElse}`,
+        profileImg: `data:image/png;base64,${somethingElse}`,
       });
     } catch (e) {
       console.log(e);
@@ -95,7 +95,10 @@ export class UploadImage extends Component {
             )}
           </div>
           <div>
-            <button onClick={this.handleGetPic}>load profile pic</button>
+            {this.state.img && <img src={this.state.img} alt="profile"></img>}
+          </div>
+          <div>
+            <button onClick={this.handleGetPic}>Development button only</button>
           </div>
         </div>
       </div>
