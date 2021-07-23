@@ -12,6 +12,7 @@ import Nav from "./components/Nav/Nav";
 import TeamPage from "./components/TeamPage/TeamPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Profile from "./components/Profile/Profile";
+import Health from "./components/healthApi/Health";
 export class MainRouter extends Component {
   render() {
     return (
@@ -42,6 +43,7 @@ export class MainRouter extends Component {
             <PrivateRoute path="/cc" exact component={CreditCard} />
             <PrivateRoute path="/team-page" exact component={TeamPage} />
             <PrivateRoute path="/profile" exact component={Profile} />
+            <PrivateRoute path="/health" exact component={Health} />
           </>
         </Provider>
       </Router>
