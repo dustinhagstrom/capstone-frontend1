@@ -42,7 +42,7 @@ export class UploadImage extends Component {
         console.log(res);
       })
       .catch((err) => {
-        throw err;
+        console.log(err);
       });
   }
 
