@@ -1,4 +1,4 @@
-.header-footer {
+.header {
     display: flex;
     justify-content: space-evenly;
 }
@@ -27,11 +27,17 @@ h2 {
     height: 40px;
 }
 img{
-    width: 300px;
+    width: 250px;
 }
 .center-buttons {
     display: block;
     margin: auto;
     width: 40%;
     height: 20px;
+}
+.player-input{
+    display: flex;
+}
+.player-input ul{
+    list-style-type: none;
 }

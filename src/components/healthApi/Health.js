@@ -10,7 +10,8 @@ export class Health extends Component {
     foodsEaten: "",
     exercise: "",
     foodArray: [],
-    exerciseArray: [],
+    exerciseInfo: [],
+    nutritionInfo: [],
   };
 
   handleOnChange = (event) => {
@@ -39,7 +40,51 @@ export class Health extends Component {
       },
     })
       .then((res) => {
-        console.log(res);
+        // res.data.foods.map((items, index) => {});
+        let typesOfFoodArray = res.data.foods;
+        let nf_calories = 0;
+        let nf_cholesterol = 0;
+        let nf_dietary_fiber = 0;
+        let nf_potassium = 0;
+        let nf_protein = 0;
+        let nf_saturated_fat = 0;
+        let nf_sodium = 0;
+        let nf_sugars = 0;
+        let nf_total_carbohydrate = 0;
+        let nf_total_fat = 0;
+        for (let i = 0; i < typesOfFoodArray.length; i++) {
+          nf_calories = nf_calories + typesOfFoodArray[i].nf_calories;
+          nf_cholesterol = nf_cholesterol + typesOfFoodArray[i].nf_cholesterol;
+          nf_dietary_fiber =
+            nf_dietary_fiber + typesOfFoodArray[i].nf_dietary_fiber;
+          nf_potassium = nf_potassium + typesOfFoodArray[i].nf_potassium;
+          nf_protein = nf_protein + typesOfFoodArray[i].nf_protein;
+          nf_saturated_fat =
+            nf_saturated_fat + typesOfFoodArray[i].nf_saturated_fat;
+          nf_sodium = nf_sodium + typesOfFoodArray[i].nf_sodium;
+          nf_sugars = nf_sugars + typesOfFoodArray[i].nf_sugars;
+          nf_total_carbohydrate =
+            nf_total_carbohydrate + typesOfFoodArray[i].nf_total_carbohydrate;
+          nf_total_fat = nf_total_fat + typesOfFoodArray[i].nf_total_fat;
+        }
+        let holdingArray = [];
+        holdingArray.push(
+          nf_calories.toFixed(2),
+          nf_cholesterol.toFixed(2),
+          nf_dietary_fiber.toFixed(2),
+          nf_potassium.toFixed(2),
+          nf_protein.toFixed(2),
+          nf_saturated_fat.toFixed(2),
+          nf_sodium.toFixed(2),
+          nf_sugars.toFixed(2),
+          nf_total_carbohydrate.toFixed(2),
+          nf_total_fat.toFixed(2)
+        );
+        console.log(holdingArray);
+        this.setState({
+          nutritionInfo: holdingArray,
+          foodsEaten: "",
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -62,7 +107,19 @@ export class Health extends Component {
       },
     })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.exercises);
+        let typesOfExercisesArray = res.data.exercises;
+        let nf_calories = 0;
+        for (let i = 0; i < typesOfExercisesArray.length; i++) {
+          nf_calories = nf_calories + typesOfExercisesArray[i].nf_calories;
+        }
+        let holdingArray = [];
+        holdingArray.push(nf_calories.toFixed(2));
+        console.log(holdingArray);
+        this.setState({
+          exerciseInfo: holdingArray,
+          exercise: "",
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -75,14 +132,14 @@ export class Health extends Component {
     const exercisePlaceholder = "Ex. I ran two miles and did 50 pushups.";
     return (
       <div>
-        <section className="header-footer">
+        <section className="header">
           <h1>Diet and Exercise</h1>
           <img src={logo} alt="nutritionix credit for api logo" />
         </section>
         <div className="content-container">
           <div className="form-container">
             <form className="diet-form">
-              <label htmlFor="food">What have you eaten today!</label>
+              <label htmlFor="food">What did you eat for your last meal?</label>
               <input
                 type="text"
                 id="food"
@@ -106,7 +163,24 @@ export class Health extends Component {
               </div>
             </form>
             <div className="player-input">
-              <ul>{/* do a .map of exercise inputs and display li's */}</ul>
+              <ul>
+                <li>Total Calories</li>
+                <li>Total Cholesterol</li>
+                <li>Total Dietary Fiber</li>
+                <li>Total Potassium</li>
+                <li>Total Protein</li>
+                <li>Total Saturated Fat</li>
+                <li>Total Sodium</li>
+                <li>Total Sugars</li>
+                <li>Total Carbs</li>
+                <li>Total Fat</li>
+              </ul>
+              <ul>
+                {this.state.nutritionInfo &&
+                  this.state.nutritionInfo.map((item, index) => {
+                    return <li key={index}>{item}</li>;
+                  })}
+              </ul>
             </div>
           </div>
           <div className="form-container">
@@ -134,7 +208,14 @@ export class Health extends Component {
               </div>
             </form>
             <div className="player-input">
-              <ul>{/* do a .map of exercise inputs and display li's */}</ul>
+              <ul>
+                <li>Total Calories</li>
+              </ul>
+              <ul>
+                {this.state.exerciseInfo.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
             </div>
           </div>
         </div>
