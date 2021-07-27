@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Axios from "../../utils/Axios";
 
+import "./uploadImage.css";
 import defaultPic from "./new_user.png";
 export class UploadImage extends Component {
   constructor(props) {
@@ -81,38 +82,42 @@ export class UploadImage extends Component {
     return (
       <div>
         <form className="file-form" onSubmit={this.handleSubmit}>
-          <div className="inline-div">
-            <label style={{ textIndent: "10%", margin: "20px 10px" }}>
-              Upload your Photo:
-              <input
-                name="image"
-                type="file"
-                ref={this.fileInput}
-                accept="image/*"
-                onChange={this.handleOnChange}
-                style={{ cursor: "grab" }}
-              />
-            </label>
-
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              margin: "10px 0px",
+              alignItems: "flex-end",
+              width: "500px",
+            }}
+          >
             <div>
-              <button style={{ margin: "0px 10px" }} type="submit">
-                Upload
-              </button>
+              <label>
+                Upload your Photo:
+                <input
+                  name="image"
+                  type="file"
+                  ref={this.fileInput}
+                  accept="image/*"
+                  onChange={this.handleOnChange}
+                  style={{ cursor: "grab" }}
+                />
+              </label>
+            </div>
+            <div>
+              <button type="submit">Upload</button>
             </div>
           </div>
         </form>
-        <hr />
-        <div>
-          <div>
-            <h3 style={{ textIndent: "2%", textDecoration: "underline" }}>
-              Your Profile Pic
-            </h3>
+        <div className="inline-div">
+          <div style={{ width: "250px" }}>
+            <h3 className="image-headers">Your Profile Pic</h3>
             {this.state.profileImg && (
               <img src={this.state.profileImg} alt="profile"></img>
             )}
           </div>
-          <div>
-            <div style={{ textIndent: "5%" }}>Preview Upload:</div>
+          <div style={{ width: "250px" }}>
+            <h3 className="image-headers">Preview Upload</h3>
             {this.state.img && <img src={this.state.img} alt="profile"></img>}
           </div>
         </div>

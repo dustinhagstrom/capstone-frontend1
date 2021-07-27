@@ -1,0 +1,25 @@
+.team-header {
+    width: 25%;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid 6px black;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid yellowgreen;
+}
+.team-roster {
+    display: grid;
+    border: 2px solid brown;
+    width: 45%;
+}
+.schedule-stats-container {
+    border: 2px solid black;
+    width: 45%;
+}
+.stats {
+    border: 2px solid orange;
+    margin-top: 5%;
+}

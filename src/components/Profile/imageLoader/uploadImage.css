@@ -1,11 +1,11 @@
-.file-form{
-    margin-top: 100px;
-}
-
 input {
     cursor: grab;
 }
-
-.inline-block{
+.inline-div{
+    margin-top: 10px;
     display: flex;
+    text-align: center;
+}
+.image-headers {
+    text-decoration: underline;
 }
