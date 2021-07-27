@@ -24,7 +24,6 @@ export class Health extends Component {
 
   handleNutritionOnClick = (event) => {
     event.preventDefault();
-    console.log(this.state.foodsEaten);
     axios({
       method: "post",
       url: "https://trackapi.nutritionix.com/v2/natural/nutrients",
@@ -93,6 +92,7 @@ export class Health extends Component {
 
   handleExerciseOnClick = (event) => {
     event.preventDefault();
+    console.log(process.env.REACT_APP_NUTRITIONIX_API_KEY);
     axios({
       method: "post",
       url: "https://trackapi.nutritionix.com/v2/natural/exercise",
@@ -164,16 +164,20 @@ export class Health extends Component {
             </form>
             <div className="player-input">
               <ul>
-                <li>Total Calories</li>
-                <li>Total Cholesterol</li>
-                <li>Total Dietary Fiber</li>
-                <li>Total Potassium</li>
-                <li>Total Protein</li>
-                <li>Total Saturated Fat</li>
-                <li>Total Sodium</li>
-                <li>Total Sugars</li>
-                <li>Total Carbs</li>
-                <li>Total Fat</li>
+                {this.state.nutritionInfo.length > 0 && (
+                  <>
+                    <li>Total Calories</li>
+                    <li>Total Cholesterol</li>
+                    <li>Total Dietary Fiber</li>
+                    <li>Total Potassium</li>
+                    <li>Total Protein</li>
+                    <li>Total Saturated Fat</li>
+                    <li>Total Sodium</li>
+                    <li>Total Sugars</li>
+                    <li>Total Carbs</li>
+                    <li>Total Fat</li>
+                  </>
+                )}
               </ul>
               <ul>
                 {this.state.nutritionInfo &&
@@ -209,7 +213,7 @@ export class Health extends Component {
             </form>
             <div className="player-input">
               <ul>
-                <li>Total Calories</li>
+                {this.state.exerciseInfo.length > 0 && <li>Total Calories:</li>}
               </ul>
               <ul>
                 {this.state.exerciseInfo.map((item, index) => {

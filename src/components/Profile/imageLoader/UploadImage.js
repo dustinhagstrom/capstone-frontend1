@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Axios from "../../utils/Axios";
 
+import defaultPic from "./new_user.png";
 export class UploadImage extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +41,7 @@ export class UploadImage extends Component {
       data,
     }) //send the post req with the new form data obj
       .then((res) => {
+        this.handleGetPic();
         console.log(res);
       })
       .catch((err) => {
@@ -55,14 +58,19 @@ export class UploadImage extends Component {
 
   async handleGetPic() {
     try {
-      console.log("click");
       let fetchedPic = await Axios.get("api/pics/player-image");
-      let somethingElse = this.arrayBufferToBase64(
-        fetchedPic.data.payload.img.data.data
-      );
+      let somethingElse;
+      if (fetchedPic) {
+        somethingElse = this.arrayBufferToBase64(
+          fetchedPic.data.payload.img.data.data
+        );
+      } else {
+        somethingElse = defaultPic;
+      }
       console.log(somethingElse);
       this.setState({
         profileImg: `data:image/png;base64,${somethingElse}`,
+        img: undefined,
       });
     } catch (e) {
       console.log(e);
@@ -72,33 +80,40 @@ export class UploadImage extends Component {
   render() {
     return (
       <div>
-        <form style={{ marginTop: "100px" }} onSubmit={this.handleSubmit}>
-          <label>
-            Upload your Photo:
-            <input
-              name="image"
-              type="file"
-              ref={this.fileInput}
-              accept="image/*"
-              onChange={this.handleOnChange}
-            />
-          </label>
-          <div>
-            <button type="submit">Upload</button>
+        <form className="file-form" onSubmit={this.handleSubmit}>
+          <div className="inline-div">
+            <label style={{ textIndent: "10%", margin: "20px 10px" }}>
+              Upload your Photo:
+              <input
+                name="image"
+                type="file"
+                ref={this.fileInput}
+                accept="image/*"
+                onChange={this.handleOnChange}
+                style={{ cursor: "grab" }}
+              />
+            </label>
+
+            <div>
+              <button style={{ margin: "0px 10px" }} type="submit">
+                Upload
+              </button>
+            </div>
           </div>
         </form>
         <hr />
         <div>
           <div>
+            <h3 style={{ textIndent: "2%", textDecoration: "underline" }}>
+              Your Profile Pic
+            </h3>
             {this.state.profileImg && (
               <img src={this.state.profileImg} alt="profile"></img>
             )}
           </div>
           <div>
+            <div style={{ textIndent: "5%" }}>Preview Upload:</div>
             {this.state.img && <img src={this.state.img} alt="profile"></img>}
-          </div>
-          <div>
-            <button onClick={this.handleGetPic}>Development button only</button>
           </div>
         </div>
       </div>

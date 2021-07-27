@@ -1,0 +1,11 @@
+.file-form{
+    margin-top: 100px;
+}
+
+input {
+    cursor: grab;
+}
+
+.inline-block{
+    display: flex;
+}

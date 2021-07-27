@@ -87,3 +87,7 @@ input:focus {
     color: white;
     position: absolute;
 }
+
+button {
+    cursor: grab;
+}

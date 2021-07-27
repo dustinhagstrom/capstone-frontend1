@@ -4,7 +4,7 @@ import UploadImage from "./imageLoader/UploadImage";
 export class Profile extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="profile">
         <div className="content">
           <UploadImage />
         </div>
