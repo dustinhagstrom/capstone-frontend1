@@ -60,17 +60,19 @@ export class UploadImage extends Component {
   async handleGetPic() {
     try {
       let fetchedPic = await Axios.get("api/pics/player-image");
+      console.log(fetchedPic);
       let somethingElse;
-      if (fetchedPic) {
+      if (fetchedPic.data.payload) {
         somethingElse = this.arrayBufferToBase64(
           fetchedPic.data.payload.img.data.data
         );
+        somethingElse = `data:image/png;base64,${somethingElse}`;
       } else {
         somethingElse = defaultPic;
       }
       console.log(somethingElse);
       this.setState({
-        profileImg: `data:image/png;base64,${somethingElse}`,
+        profileImg: somethingElse,
         img: undefined,
       });
     } catch (e) {
