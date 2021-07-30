@@ -11,12 +11,15 @@ export class UploadImage extends Component {
 
     this.state = {
       file: undefined,
-      img: undefined,
+      image: undefined,
       profileImg: undefined,
+      isButtonDisabled: true,
     };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fileInput = React.createRef();
+    this.fileInput = React.createRef(); //the ref is assigned to an instance
+    //property when the component is constructed so that it can be referenced
+    //throughout the component. does not follow normal props to children model
     this.handleGetPic = this.handleGetPic.bind(this);
     this.arrayBufferToBase64 = this.arrayBufferToBase64.bind(this);
   }
@@ -26,10 +29,16 @@ export class UploadImage extends Component {
   };
 
   handleOnChange(event) {
-    this.setState({
-      file: this.fileInput.current.files[0],
-      img: URL.createObjectURL(this.fileInput.current.files[0]),
-    });
+    console.log("new value", event.target);
+    if (this.fileInput.current.files.length !== 0) {
+      //prevents breaking app by preventing
+      //image preview of something that does not exist.
+      this.setState({
+        file: this.fileInput.current.files[0],
+        image: URL.createObjectURL(this.fileInput.current.files[0]),
+        isButtonDisabled: false,
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -51,6 +60,7 @@ export class UploadImage extends Component {
   }
 
   arrayBufferToBase64(buffer) {
+    //convert the buffer to base64
     let binary = "";
     let bytes = [].slice.call(new Uint8Array(buffer));
     bytes.forEach((b) => (binary += String.fromCharCode(b)));
@@ -68,12 +78,14 @@ export class UploadImage extends Component {
         );
         somethingElse = `data:image/png;base64,${somethingElse}`;
       } else {
-        somethingElse = defaultPic;
+        somethingElse = defaultPic; //if no pic in db then give default
       }
       console.log(somethingElse);
       this.setState({
+        file: undefined,
+        image: undefined,
         profileImg: somethingElse,
-        img: undefined,
+        isButtonDisabled: true,
       });
     } catch (e) {
       console.log(e);
@@ -81,6 +93,7 @@ export class UploadImage extends Component {
   }
 
   render() {
+    const { isButtonDisabled, profileImg, image } = this.state;
     return (
       <div>
         <form className="file-form" onSubmit={this.handleSubmit}>
@@ -107,20 +120,20 @@ export class UploadImage extends Component {
               </label>
             </div>
             <div>
-              <button type="submit">Upload</button>
+              <button type="submit" disabled={isButtonDisabled}>
+                Upload
+              </button>
             </div>
           </div>
         </form>
         <div className="inline-div">
           <div style={{ width: "250px" }}>
             <h3 className="image-headers">Your Profile Pic</h3>
-            {this.state.profileImg && (
-              <img src={this.state.profileImg} alt="profile"></img>
-            )}
+            {profileImg && <img src={profileImg} alt="profile"></img>}
           </div>
           <div style={{ width: "250px" }}>
             <h3 className="image-headers">Preview Upload</h3>
-            {this.state.img && <img src={this.state.img} alt="profile"></img>}
+            {image && <img src={image} alt="profile"></img>}
           </div>
         </div>
       </div>
